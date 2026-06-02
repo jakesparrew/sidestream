@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  /* Monochrome dark — no accent colors */
+  --color-ink: #08090b;
+  --color-surface: #0d0f13;
+  --color-surface-2: #12161b;
+  --color-line: #20242a;
+  --color-line-soft: #16191e;
+  --color-fg: #e9ebee;
+  --color-muted: #9aa4af;
+  --color-dim: #5b636d;
+
+  /* Status (functional, desaturated — not decorative accents) */
+  --color-live: #56b06a;
+  --color-warn: #c9a44a;
+  --color-down: #b0555a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-jb), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #2a2f36;
+    color: #fff;
+  }
+  h1, h2, h3 {
+    letter-spacing: -0.022em;
+  }
+}
+
+@layer utilities {
+  .container-edge {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 56px);
+  }
+  .mono {
+    font-family: var(--font-mono);
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-dim);
+  }
+  .hairline {
+    border-color: var(--color-line);
+  }
+  .grain {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.025) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+}
