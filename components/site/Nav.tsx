@@ -20,12 +20,15 @@ export function Nav() {
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
-          {links.map((l) => (
+          {links.map((l, i) => (
             <a
               key={l.href}
               href={l.href}
-              className="whitespace-nowrap text-sm text-muted transition-colors hover:text-fg"
+              className="group flex items-baseline gap-1.5 whitespace-nowrap text-sm text-muted transition-colors hover:text-fg"
             >
+              <span className="mono text-[10px] text-dim transition-colors group-hover:text-muted">
+                0{i + 1}
+              </span>
               {l.label}
             </a>
           ))}

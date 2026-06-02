@@ -9,8 +9,10 @@ export function Capabilities() {
     <section id="capabilities" className="border-b border-line">
       <div className="container-edge py-20 md:py-28">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow">{t.capabilities.eyebrow}</p>
-          <h2 className="text-gradient mt-4 text-3xl font-semibold md:text-4xl">
+          <p className="eyebrow flex items-center gap-2">
+            <span className="text-dim">02</span> {t.capabilities.eyebrow}
+          </p>
+          <h2 className="text-gradient mt-4 text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
             {t.capabilities.heading}
           </h2>
         </Reveal>

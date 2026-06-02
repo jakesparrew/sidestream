@@ -48,7 +48,7 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
         </motion.p>
 
         <motion.h1
-          className="text-gradient mt-5 max-w-3xl text-4xl font-semibold leading-[1.04] md:text-[64px]"
+          className="text-gradient mt-6 max-w-3xl text-[40px] font-semibold leading-[1.02] tracking-[-0.035em] md:text-[68px]"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.06, ease }}
@@ -85,21 +85,25 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
           </a>
         </motion.div>
 
-        <motion.div
-          className="mt-16 flex flex-wrap gap-x-12 gap-y-6 border-t border-line pt-8"
+        {/* Live aggregate ticker — designed mono ledger strip, real non-private metrics */}
+        <motion.dl
+          className="mt-16 grid grid-cols-2 divide-line border-y border-line sm:grid-cols-4 sm:divide-x"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.34 }}
         >
-          {stats.map((s) => (
-            <div key={s.label}>
-              <div className="mono text-2xl font-semibold text-fg md:text-3xl">
+          {stats.map((s, i) => (
+            <div key={s.label} className={`py-6 ${i === 0 ? "sm:pr-6" : "px-6"}`}>
+              <dt className="eyebrow flex items-center gap-1.5">
+                <span className="text-dim">0{i + 1}</span>
+                {s.label}
+              </dt>
+              <dd className="mono mt-2 text-2xl font-semibold tracking-tight text-fg md:text-3xl">
                 <CountUp value={s.value} />
-              </div>
-              <div className="eyebrow mt-1">{s.label}</div>
+              </dd>
             </div>
           ))}
-        </motion.div>
+        </motion.dl>
       </div>
     </section>
   );

@@ -61,7 +61,7 @@ export const t: Record<Lang, Dict> = {
     },
     marquee: "Gebouwd en gedraaid door Sidestream",
     products: {
-      eyebrow: "De portfolio",
+      eyebrow: "Geselecteerd werk",
       heading: "Producten die we bouwden — en nog steeds draaien.",
       sub: "Ticketing, planning, civiele apps, e-commerce, AI-tools. Verschillende markten, één operator. Elk hiervan draait vandaag live.",
       visit: "bezoek",
@@ -130,7 +130,7 @@ export const t: Record<Lang, Dict> = {
     },
     marquee: "Built and operated by Sidestream",
     products: {
-      eyebrow: "The portfolio",
+      eyebrow: "Selected work",
       heading: "Products we built — and still run.",
       sub: "Ticketing, scheduling, civic apps, e-commerce, AI tools. Different markets, one operator. Each of these is live today.",
       visit: "visit",

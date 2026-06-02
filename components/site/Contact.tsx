@@ -16,8 +16,10 @@ export function Contact() {
       />
       <div className="container-edge relative py-24 md:py-32">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow">{t.contact.eyebrow}</p>
-          <h2 className="text-gradient mt-4 text-3xl font-semibold md:text-5xl">
+          <p className="eyebrow flex items-center gap-2">
+            <span className="text-dim">05</span> {t.contact.eyebrow}
+          </p>
+          <h2 className="text-gradient mt-4 text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
             {t.contact.heading}
           </h2>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted">

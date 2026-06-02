@@ -9,11 +9,11 @@ export function Marquee({ projects }: { projects: ProjectData[] }) {
   const row = [...projects, ...projects]; // duplicate for seamless loop
 
   return (
-    <section className="border-b border-line py-10">
+    <section className="group border-b border-line py-10">
       <div className="container-edge">
-        <p className="eyebrow text-center">{t.marquee}</p>
+        <p className="eyebrow">{t.marquee}</p>
       </div>
-      <div className="marquee-mask mt-6 overflow-hidden">
+      <div className="marquee-mask mt-6 overflow-hidden border-y border-line py-6">
         <div className="animate-marquee flex w-max gap-10 pr-10">
           {row.map((p, i) => (
             <div
