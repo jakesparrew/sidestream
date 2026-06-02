@@ -5,6 +5,8 @@ export type Metric = {
   label: string;
   value: number | string;
   format: MetricFormat;
+  /** Value one week ago — drives the week-over-week delta on /dash. */
+  prevValue?: number;
   /** Private metrics (e.g. revenue) render on /dash but never on the public site. */
   private?: boolean;
 };

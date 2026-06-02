@@ -22,6 +22,12 @@ export function formatMetric(value: number | string, format: MetricFormat): stri
   }
 }
 
+/** Percentage change cur vs prev. Returns null when no baseline. */
+export function pctChange(cur: number, prev?: number): number | null {
+  if (prev === undefined || prev === 0) return null;
+  return ((cur - prev) / prev) * 100;
+}
+
 /** ISO -> "2m", "3h", "2d". */
 export function relativeTime(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();

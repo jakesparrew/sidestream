@@ -37,6 +37,12 @@ type Dict = {
     ago: string;
     private: string;
     note: string;
+    vsLastWeek: string;
+    treasury: string;
+    cryptoPortfolio: string;
+    bankBalance: string;
+    totalMrr: string;
+    via: string;
     kpis: { liveProducts: string; totalUsers: string; ticketsSold: string; visitors: string; revenue: string };
     status: { live: string; warn: string; down: string; mock: string };
   };
@@ -102,6 +108,12 @@ export const t: Record<Lang, Dict> = {
       ago: "geleden",
       private: "privé",
       note: "Alle cijfers zijn mock data. Elk project gaat live door zijn adapter te vervangen door een echt metrics-endpoint — geen aanpassingen aan het dashboard nodig.",
+      vsLastWeek: "vs vorige week",
+      treasury: "Treasury",
+      cryptoPortfolio: "Crypto portfolio",
+      bankBalance: "Banksaldo",
+      totalMrr: "Totale MRR",
+      via: "via",
       kpis: { liveProducts: "Live producten", totalUsers: "Totaal gebruikers", ticketsSold: "Tickets verkocht", visitors: "Bezoekers", revenue: "Portfolio omzet" },
       status: { live: "Live", warn: "Verstoord", down: "Offline", mock: "Mock" },
     },
@@ -165,6 +177,12 @@ export const t: Record<Lang, Dict> = {
       ago: "ago",
       private: "private",
       note: "All figures are mock data. Each project goes live by swapping its adapter for a real metrics endpoint — no dash changes required.",
+      vsLastWeek: "vs last week",
+      treasury: "Treasury",
+      cryptoPortfolio: "Crypto portfolio",
+      bankBalance: "Bank balance",
+      totalMrr: "Total MRR",
+      via: "via",
       kpis: { liveProducts: "Live products", totalUsers: "Total users", ticketsSold: "Tickets sold", visitors: "Visitors", revenue: "Portfolio revenue" },
       status: { live: "Live", warn: "Degraded", down: "Down", mock: "Mock" },
     },
@@ -177,6 +195,7 @@ export const METRIC_LABELS: Record<string, Record<Lang, string>> = {
   active_events: { nl: "Actieve events", en: "Active events" },
   organizers: { nl: "Organisatoren", en: "Organizers" },
   revenue: { nl: "Omzet", en: "Revenue" },
+  mrr: { nl: "Terugkerende omzet", en: "Recurring revenue" },
   users: { nl: "Gebruikers", en: "Users" },
   premium_users: { nl: "Premium gebruikers", en: "Premium users" },
   controles: { nl: "Controles", en: "Inspections" },

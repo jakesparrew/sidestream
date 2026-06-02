@@ -3,16 +3,14 @@ import type { ProjectData, ProjectEntry } from "./types";
 /**
  * MOCK DATA REGISTRY
  * ------------------
- * Every project below returns mock data flagged `source: "mock"`. The dash shows
- * a visible "mock" badge so these numbers are never mistaken for live data.
+ * Every project returns mock data flagged `source: "mock"`; the dash shows a
+ * "mock" badge so these are never mistaken for live data. Each metric carries a
+ * `prevValue` (one week ago) which drives the week-over-week delta on /dash.
+ * `mrr` metrics are recurring revenue (EUR/month) and only exist on projects
+ * that actually have a recurring model.
  *
- * To take a project live later: replace its `fetch()` body with a real call to
- * that project's read-only metrics URL (Trapspotter already has this pattern),
- * map the response into the `ProjectData` shape, and set `source: "api"` (or
- * "rss"). The dash, registry shape, and UI stay untouched.
- *
- * `category` and `blurb` are localized (nl/en). Metric labels are translated at
- * render time from the central dictionary in lib/i18n.ts.
+ * To take a project live: replace its `fetch()` with a real call, map into the
+ * `ProjectData` shape, set `source`. Nothing in the dash/UI changes.
  */
 
 function minutesAgo(min: number): string {
@@ -34,10 +32,11 @@ const MOCK: ProjectData[] = [
     source: "mock",
     lastUpdate: minutesAgo(2),
     metrics: [
-      { key: "tickets_sold", label: "Tickets sold", value: 124_300, format: "number" },
-      { key: "active_events", label: "Active events", value: 38, format: "number" },
-      { key: "organizers", label: "Organizers", value: 27, format: "number" },
-      { key: "revenue", label: "Revenue", value: 184_200, format: "currency", private: true },
+      { key: "tickets_sold", label: "Tickets sold", value: 124_300, prevValue: 118_900, format: "number" },
+      { key: "active_events", label: "Active events", value: 38, prevValue: 41, format: "number" },
+      { key: "organizers", label: "Organizers", value: 27, prevValue: 25, format: "number" },
+      { key: "mrr", label: "Recurring revenue", value: 2_100, prevValue: 1_980, format: "currency", private: true },
+      { key: "revenue", label: "Revenue", value: 184_200, prevValue: 172_000, format: "currency", private: true },
     ],
   },
   {
@@ -54,10 +53,11 @@ const MOCK: ProjectData[] = [
     source: "mock",
     lastUpdate: minutesAgo(1),
     metrics: [
-      { key: "users", label: "Users", value: 12_480, format: "number" },
-      { key: "premium_users", label: "Premium users", value: 842, format: "number" },
-      { key: "controles", label: "Inspections", value: 3_210, format: "number" },
-      { key: "revenue", label: "Revenue", value: 4_180, format: "currency", private: true },
+      { key: "users", label: "Users", value: 12_480, prevValue: 11_800, format: "number" },
+      { key: "premium_users", label: "Premium users", value: 842, prevValue: 880, format: "number" },
+      { key: "controles", label: "Inspections", value: 3_210, prevValue: 3_050, format: "number" },
+      { key: "mrr", label: "Recurring revenue", value: 3_900, prevValue: 4_100, format: "currency", private: true },
+      { key: "revenue", label: "Revenue", value: 4_180, prevValue: 4_400, format: "currency", private: true },
     ],
   },
   {
@@ -74,10 +74,11 @@ const MOCK: ProjectData[] = [
     source: "mock",
     lastUpdate: minutesAgo(5),
     metrics: [
-      { key: "organisations", label: "Organisations", value: 54, format: "number" },
-      { key: "staff", label: "Staff", value: 1_920, format: "number" },
-      { key: "reservations", label: "Reservations", value: 28_400, format: "number" },
-      { key: "revenue", label: "Revenue", value: 9_140, format: "currency", private: true },
+      { key: "organisations", label: "Organisations", value: 54, prevValue: 49, format: "number" },
+      { key: "staff", label: "Staff", value: 1_920, prevValue: 1_840, format: "number" },
+      { key: "reservations", label: "Reservations", value: 28_400, prevValue: 26_100, format: "number" },
+      { key: "mrr", label: "Recurring revenue", value: 8_200, prevValue: 7_700, format: "currency", private: true },
+      { key: "revenue", label: "Revenue", value: 9_140, prevValue: 8_600, format: "currency", private: true },
     ],
   },
   {
@@ -93,7 +94,9 @@ const MOCK: ProjectData[] = [
     status: "live",
     source: "mock",
     lastUpdate: minutesAgo(11),
-    metrics: [{ key: "generations", label: "Generations", value: 86_500, format: "number" }],
+    metrics: [
+      { key: "generations", label: "Generations", value: 86_500, prevValue: 79_000, format: "number" },
+    ],
   },
   {
     id: "barbassie",
@@ -108,7 +111,9 @@ const MOCK: ProjectData[] = [
     status: "live",
     source: "mock",
     lastUpdate: minutesAgo(18),
-    metrics: [{ key: "visitors", label: "Visitors", value: 14_200, format: "number" }],
+    metrics: [
+      { key: "visitors", label: "Visitors", value: 14_200, prevValue: 15_100, format: "number" },
+    ],
   },
   {
     id: "flesjesfabriek",
@@ -124,8 +129,8 @@ const MOCK: ProjectData[] = [
     source: "mock",
     lastUpdate: minutesAgo(26),
     metrics: [
-      { key: "events", label: "Events", value: 12, format: "number" },
-      { key: "visitors", label: "Visitors", value: 8_640, format: "number" },
+      { key: "events", label: "Events", value: 12, prevValue: 10, format: "number" },
+      { key: "visitors", label: "Visitors", value: 8_640, prevValue: 7_900, format: "number" },
     ],
   },
   {
@@ -141,7 +146,9 @@ const MOCK: ProjectData[] = [
     status: "live",
     source: "mock",
     lastUpdate: minutesAgo(43),
-    metrics: [{ key: "orders", label: "Orders", value: 1_284, format: "number" }],
+    metrics: [
+      { key: "orders", label: "Orders", value: 1_284, prevValue: 1_190, format: "number" },
+    ],
   },
   {
     id: "investorclub",
@@ -157,8 +164,9 @@ const MOCK: ProjectData[] = [
     source: "mock",
     lastUpdate: minutesAgo(9),
     metrics: [
-      { key: "visitors", label: "Visitors", value: 23_800, format: "number" },
-      { key: "podcast_listeners", label: "Podcast listeners", value: 4_120, format: "number" },
+      { key: "visitors", label: "Visitors", value: 23_800, prevValue: 22_400, format: "number" },
+      { key: "podcast_listeners", label: "Podcast listeners", value: 4_120, prevValue: 3_800, format: "number" },
+      { key: "mrr", label: "Recurring revenue", value: 9_100, prevValue: 8_600, format: "currency", private: true },
     ],
   },
   {
@@ -175,8 +183,9 @@ const MOCK: ProjectData[] = [
     source: "mock",
     lastUpdate: minutesAgo(14),
     metrics: [
-      { key: "accounts", label: "Accounts", value: 3_240, format: "number" },
-      { key: "visitors", label: "Visitors", value: 41_500, format: "number" },
+      { key: "accounts", label: "Accounts", value: 3_240, prevValue: 3_100, format: "number" },
+      { key: "visitors", label: "Visitors", value: 41_500, prevValue: 39_000, format: "number" },
+      { key: "mrr", label: "Recurring revenue", value: 1_200, prevValue: 1_100, format: "currency", private: true },
     ],
   },
   {
@@ -192,7 +201,9 @@ const MOCK: ProjectData[] = [
     status: "live",
     source: "mock",
     lastUpdate: minutesAgo(3),
-    metrics: [{ key: "visitors", label: "Visitors", value: 6_300, format: "number" }],
+    metrics: [
+      { key: "visitors", label: "Visitors", value: 6_300, prevValue: 5_400, format: "number" },
+    ],
   },
   {
     id: "morgann",
@@ -207,7 +218,9 @@ const MOCK: ProjectData[] = [
     status: "warn",
     source: "mock",
     lastUpdate: minutesAgo(58),
-    metrics: [{ key: "requests", label: "Requests", value: 540, format: "number" }],
+    metrics: [
+      { key: "requests", label: "Requests", value: 540, prevValue: 610, format: "number" },
+    ],
   },
 ];
 

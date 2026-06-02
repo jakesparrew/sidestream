@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ProjectLogo } from "@/components/ProjectLogo";
 import { StatusDot, MockBadge } from "./primitives";
+import { Delta } from "./Delta";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { formatMetric, relativeTime } from "@/lib/format";
 import { metricLabel } from "@/lib/i18n";
@@ -36,9 +37,17 @@ export function ProjectCard({ project, index = 0 }: { project: ProjectData; inde
         <dl className="mt-5 space-y-2">
           {project.metrics.map((m) => (
             <div key={m.key} className="flex items-baseline justify-between gap-3">
-              <dt className="text-sm text-muted">{metricLabel(m.key, lang, m.label)}</dt>
-              <dd className="mono text-sm font-semibold text-fg">
-                {formatMetric(m.value, m.format)}
+              <dt className="text-sm text-muted">
+                {metricLabel(m.key, lang, m.label)}
+                {m.key === "mrr" ? " /mo" : ""}
+              </dt>
+              <dd className="flex items-baseline gap-2">
+                {typeof m.value === "number" && (
+                  <Delta value={m.value} prev={m.prevValue} />
+                )}
+                <span className="mono text-sm font-semibold text-fg">
+                  {formatMetric(m.value, m.format)}
+                </span>
               </dd>
             </div>
           ))}

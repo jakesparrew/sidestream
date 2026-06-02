@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { KpiStrip } from "./KpiStrip";
+import { TreasuryStrip } from "./TreasuryStrip";
 import { ProjectCard } from "./ProjectCard";
 import { useI18n, LangToggle } from "@/components/i18n/LanguageProvider";
 import type { ProjectData } from "@/lib/projects";
@@ -34,10 +35,12 @@ export function DashView({
         </div>
       </header>
 
-      <main className="container-edge py-8">
+      <main className="container-edge space-y-8 py-8">
         <KpiStrip totals={totals} />
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <TreasuryStrip totalMrr={totals.totalMrr} prevMrr={totals.prev.totalMrr} />
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i} />
           ))}

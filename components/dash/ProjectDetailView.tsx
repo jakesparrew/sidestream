@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ProjectLogo } from "@/components/ProjectLogo";
 import { StatusDot, MockBadge } from "./primitives";
+import { Delta } from "./Delta";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { formatMetric, relativeTime } from "@/lib/format";
 import { metricLabel } from "@/lib/i18n";
@@ -45,13 +46,22 @@ export function ProjectDetailView({ project }: { project: ProjectData }) {
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {project.metrics.map((m) => (
             <div key={m.key} className="rounded-xl border border-line bg-surface p-6">
-              <div className="mono text-3xl font-semibold text-fg">
-                {formatMetric(m.value, m.format)}
+              <div className="flex items-baseline gap-3">
+                <span className="mono text-3xl font-semibold text-fg">
+                  {formatMetric(m.value, m.format)}
+                </span>
+                {typeof m.value === "number" && (
+                  <Delta value={m.value} prev={m.prevValue} size="md" />
+                )}
               </div>
               <div className="eyebrow mt-2">
                 {metricLabel(m.key, lang, m.label)}
+                {m.key === "mrr" ? " /mo" : ""}
                 {m.private ? ` · ${t.dash.private}` : ""}
               </div>
+              {typeof m.value === "number" && m.prevValue !== undefined && (
+                <div className="mt-1 text-xs text-dim">{t.dash.vsLastWeek}</div>
+              )}
             </div>
           ))}
         </div>

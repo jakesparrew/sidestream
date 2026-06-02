@@ -34,32 +34,56 @@ export async function getProject(id: string): Promise<ProjectData | null> {
   }
 }
 
-export type PortfolioTotals = {
-  liveProducts: number;
+export type TotalsSnapshot = {
   totalUsers: number;
   ticketsSold: number;
   totalRevenue: number;
   totalVisitors: number;
+  totalMrr: number;
+};
+
+export type PortfolioTotals = TotalsSnapshot & {
+  liveProducts: number;
+  /** Same roll-up, computed from each metric's prevValue (one week ago). */
+  prev: TotalsSnapshot;
 };
 
 const num = (m: Metric | undefined): number =>
   m && typeof m.value === "number" ? m.value : 0;
 
+const prevNum = (m: Metric | undefined): number =>
+  m ? (m.prevValue ?? (typeof m.value === "number" ? m.value : 0)) : 0;
+
 const find = (p: ProjectData, key: string) => p.metrics.find((m) => m.key === key);
 
 /** Roll-up numbers for the dash KPI strip (includes private metrics). */
 export function getPortfolioTotals(projects: ProjectData[]): PortfolioTotals {
-  return projects.reduce<PortfolioTotals>(
-    (acc, p) => {
-      acc.liveProducts += p.status !== "down" ? 1 : 0;
-      acc.totalUsers += num(find(p, "users")) + num(find(p, "accounts"));
-      acc.ticketsSold += num(find(p, "tickets_sold"));
-      acc.totalRevenue += num(find(p, "revenue"));
-      acc.totalVisitors += num(find(p, "visitors"));
-      return acc;
-    },
-    { liveProducts: 0, totalUsers: 0, ticketsSold: 0, totalRevenue: 0, totalVisitors: 0 },
-  );
+  const blank = (): TotalsSnapshot => ({
+    totalUsers: 0,
+    ticketsSold: 0,
+    totalRevenue: 0,
+    totalVisitors: 0,
+    totalMrr: 0,
+  });
+  const cur = blank();
+  const prev = blank();
+  let liveProducts = 0;
+
+  for (const p of projects) {
+    if (p.status !== "down") liveProducts += 1;
+    cur.totalUsers += num(find(p, "users")) + num(find(p, "accounts"));
+    prev.totalUsers += prevNum(find(p, "users")) + prevNum(find(p, "accounts"));
+    cur.ticketsSold += num(find(p, "tickets_sold"));
+    prev.ticketsSold += prevNum(find(p, "tickets_sold"));
+    cur.totalRevenue += num(find(p, "revenue"));
+    prev.totalRevenue += prevNum(find(p, "revenue"));
+    cur.totalVisitors += num(find(p, "visitors"));
+    prev.totalVisitors += prevNum(find(p, "visitors"));
+    cur.totalMrr += num(find(p, "mrr"));
+    prev.totalMrr += prevNum(find(p, "mrr"));
+  }
+
+  return { liveProducts, ...cur, prev };
 }
 
 /** Public-site metric: a project's single headline non-private stat. */
