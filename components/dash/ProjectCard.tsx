@@ -10,6 +10,12 @@ import { formatMetric, relativeTime } from "@/lib/format";
 import { metricLabel } from "@/lib/i18n";
 import type { ProjectData } from "@/lib/projects";
 
+function spotlightMove(e: React.MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+}
+
 export function ProjectCard({ project, index = 0 }: { project: ProjectData; index?: number }) {
   const { t, lang } = useI18n();
   return (
@@ -21,7 +27,8 @@ export function ProjectCard({ project, index = 0 }: { project: ProjectData; inde
     >
       <Link
         href={`/dash/${project.id}`}
-        className="group flex h-full flex-col rounded-xl border border-line bg-surface p-5 transition-colors hover:border-dim hover:bg-surface-2"
+        onMouseMove={spotlightMove}
+        className="spotlight group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface p-5 transition-colors hover:border-dim hover:bg-surface-2"
       >
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">

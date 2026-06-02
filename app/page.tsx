@@ -7,6 +7,7 @@ import { Process } from "@/components/site/Process";
 import { StudioModel } from "@/components/site/StudioModel";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { getAllProjects } from "@/lib/projects";
 
 export const revalidate = 300;
@@ -37,6 +38,7 @@ export default async function Home() {
 
   return (
     <>
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero metrics={metrics} />

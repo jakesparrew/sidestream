@@ -8,6 +8,12 @@ import { formatMetric } from "@/lib/format";
 import { metricLabel } from "@/lib/i18n";
 import { publicHeadline, type ProjectData } from "@/lib/projects";
 
+function spotlightMove(e: React.MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+}
+
 export function Products({ projects }: { projects: ProjectData[] }) {
   const { t, lang } = useI18n();
 
@@ -16,7 +22,7 @@ export function Products({ projects }: { projects: ProjectData[] }) {
       <div className="container-edge py-20 md:py-28">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">{t.products.eyebrow}</p>
-          <h2 className="mt-4 text-3xl font-semibold text-fg md:text-4xl">
+          <h2 className="text-gradient mt-4 text-3xl font-semibold md:text-4xl">
             {t.products.heading}
           </h2>
           <p className="mt-4 text-muted">{t.products.sub}</p>
@@ -31,7 +37,8 @@ export function Products({ projects }: { projects: ProjectData[] }) {
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col bg-surface p-6"
+                onMouseMove={spotlightMove}
+                className="spotlight group flex flex-col bg-surface p-6"
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}

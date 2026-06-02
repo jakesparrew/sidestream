@@ -10,7 +10,7 @@ export function Process() {
       <div className="container-edge py-20 md:py-28">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">{t.process.eyebrow}</p>
-          <h2 className="mt-4 text-3xl font-semibold text-fg md:text-4xl">
+          <h2 className="text-gradient mt-4 text-3xl font-semibold md:text-4xl">
             {t.process.heading}
           </h2>
         </Reveal>

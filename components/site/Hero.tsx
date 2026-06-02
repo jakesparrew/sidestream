@@ -24,14 +24,17 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
 
   return (
     <section className="relative overflow-hidden border-b border-line">
-      {/* monochrome glow + grain */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.5]"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 50% -8%, rgba(255,255,255,0.10), transparent 70%)",
-        }}
-      />
+      {/* monochrome aurora + glow + grain */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="aurora-1 absolute -top-1/3 left-1/4 h-[120%] w-[55%] rounded-full opacity-60 blur-3xl"
+          style={{ background: "radial-gradient(circle, rgba(255,255,255,0.09), transparent 60%)" }}
+        />
+        <div
+          className="aurora-2 absolute -top-1/4 right-1/5 h-[110%] w-[45%] rounded-full opacity-40 blur-3xl"
+          style={{ background: "radial-gradient(circle, rgba(255,255,255,0.06), transparent 60%)" }}
+        />
+      </div>
       <div className="grain pointer-events-none absolute inset-0 opacity-50" />
 
       <div className="container-edge relative py-28 md:py-36">
@@ -45,7 +48,7 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
         </motion.p>
 
         <motion.h1
-          className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.04] text-fg md:text-[64px]"
+          className="text-gradient mt-5 max-w-3xl text-4xl font-semibold leading-[1.04] md:text-[64px]"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.06, ease }}
