@@ -12,12 +12,14 @@ export type Metric = {
 export type ProjectStatus = "live" | "warn" | "down" | "mock";
 export type DataSource = "api" | "rss" | "mock";
 
+export type Localized = { nl: string; en: string };
+
 export type ProjectData = {
   id: string;
   name: string;
-  category: string;
+  category: Localized;
   /** One-line description of what it is + Sidestream's role. */
-  blurb: string;
+  blurb: Localized;
   url: string;
   /** Path under /public, or null to fall back to a text monogram. */
   logo: string | null;

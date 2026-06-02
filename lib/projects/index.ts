@@ -12,8 +12,8 @@ export async function getAllProjects(): Promise<ProjectData[]> {
     return {
       id: PROJECTS[i].id,
       name: PROJECTS[i].id,
-      category: "Unknown",
-      blurb: "Data source unreachable.",
+      category: { nl: "Onbekend", en: "Unknown" },
+      blurb: { nl: "Databron onbereikbaar.", en: "Data source unreachable." },
       url: "#",
       logo: null,
       status: "down" as const,
