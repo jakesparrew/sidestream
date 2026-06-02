@@ -7,6 +7,7 @@ const STATUS_COLOR: Record<ProjectStatus, string> = {
   live: "var(--color-live)",
   warn: "var(--color-warn)",
   down: "var(--color-down)",
+  inactive: "var(--color-dim)",
   mock: "var(--color-dim)",
 };
 

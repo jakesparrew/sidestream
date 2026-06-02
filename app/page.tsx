@@ -22,10 +22,14 @@ function sumMetric(projects: Awaited<ReturnType<typeof getAllProjects>>, keys: s
 }
 
 export default async function Home() {
-  const projects = await getAllProjects();
+  const allProjects = await getAllProjects();
+  // Public showcase: only active products (no inactive/down).
+  const projects = allProjects.filter(
+    (p) => p.status !== "down" && p.status !== "inactive",
+  );
 
   const metrics = {
-    liveProducts: projects.filter((p) => p.status !== "down").length,
+    liveProducts: projects.length,
     usersServed: sumMetric(projects, ["users", "accounts"]),
     ticketsSold: sumMetric(projects, ["tickets_sold"]),
     visitors: sumMetric(projects, ["visitors"]),

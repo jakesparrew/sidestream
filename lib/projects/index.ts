@@ -70,7 +70,7 @@ export function getPortfolioTotals(projects: ProjectData[]): PortfolioTotals {
   let liveProducts = 0;
 
   for (const p of projects) {
-    if (p.status !== "down") liveProducts += 1;
+    if (p.status !== "down" && p.status !== "inactive") liveProducts += 1;
     cur.totalUsers += num(find(p, "users")) + num(find(p, "accounts"));
     prev.totalUsers += prevNum(find(p, "users")) + prevNum(find(p, "accounts"));
     cur.ticketsSold += num(find(p, "tickets_sold"));

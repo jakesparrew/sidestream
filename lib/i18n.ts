@@ -44,7 +44,7 @@ type Dict = {
     totalMrr: string;
     via: string;
     kpis: { liveProducts: string; totalUsers: string; ticketsSold: string; visitors: string; revenue: string };
-    status: { live: string; warn: string; down: string; mock: string };
+    status: { live: string; warn: string; down: string; inactive: string; mock: string };
   };
 };
 
@@ -115,7 +115,7 @@ export const t: Record<Lang, Dict> = {
       totalMrr: "Totale MRR",
       via: "via",
       kpis: { liveProducts: "Live producten", totalUsers: "Totaal gebruikers", ticketsSold: "Tickets verkocht", visitors: "Bezoekers", revenue: "Portfolio omzet" },
-      status: { live: "Live", warn: "Verstoord", down: "Offline", mock: "Mock" },
+      status: { live: "Live", warn: "Verstoord", down: "Offline", inactive: "Inactief", mock: "Mock" },
     },
   },
   en: {
@@ -184,7 +184,7 @@ export const t: Record<Lang, Dict> = {
       totalMrr: "Total MRR",
       via: "via",
       kpis: { liveProducts: "Live products", totalUsers: "Total users", ticketsSold: "Tickets sold", visitors: "Visitors", revenue: "Portfolio revenue" },
-      status: { live: "Live", warn: "Degraded", down: "Down", mock: "Mock" },
+      status: { live: "Live", warn: "Degraded", down: "Down", inactive: "Inactive", mock: "Mock" },
     },
   },
 };

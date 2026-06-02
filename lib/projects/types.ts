@@ -11,7 +11,7 @@ export type Metric = {
   private?: boolean;
 };
 
-export type ProjectStatus = "live" | "warn" | "down" | "mock";
+export type ProjectStatus = "live" | "warn" | "down" | "inactive" | "mock";
 export type DataSource = "api" | "rss" | "mock";
 
 export type Localized = { nl: string; en: string };

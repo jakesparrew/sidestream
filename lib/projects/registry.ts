@@ -222,6 +222,42 @@ const MOCK: ProjectData[] = [
       { key: "requests", label: "Requests", value: 540, prevValue: 610, format: "number" },
     ],
   },
+  {
+    id: "dazzap",
+    name: "Dazzap",
+    category: { nl: "Product", en: "Product" },
+    // TODO: replace with the real description once confirmed — kept deliberately
+    // factual (no invented features) per the no-placeholder rule.
+    blurb: {
+      nl: "Recente toevoeging aan de Sidestream-portfolio.",
+      en: "Recent addition to the Sidestream portfolio.",
+    },
+    url: "https://dazzap.com",
+    logo: null,
+    status: "live",
+    source: "mock",
+    lastUpdate: minutesAgo(7),
+    metrics: [
+      { key: "users", label: "Users", value: 1_180, prevValue: 940, format: "number" },
+    ],
+  },
+  {
+    id: "keizerfest",
+    name: "Keizerfest",
+    category: { nl: "Festival", en: "Festival" },
+    blurb: {
+      nl: "Gratis driedaags stadsfestival in het Keizerpark in Gent — Back2Scratch, BDKMV, Wallhala en Wide Open.",
+      en: "Free three-day city festival in Keizerpark, Ghent — Back2Scratch, BDKMV, Wallhala and Wide Open.",
+    },
+    url: "https://keizerfest.be",
+    logo: null,
+    status: "inactive",
+    source: "mock",
+    lastUpdate: minutesAgo(60 * 24 * 18), // seasonal — last edition wrapped
+    metrics: [
+      { key: "visitors", label: "Visitors", value: 18_400, format: "number" },
+    ],
+  },
 ];
 
 export const PROJECTS: ProjectEntry[] = MOCK.map((data) => ({
