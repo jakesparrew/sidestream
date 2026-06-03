@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { CountUp } from "@/components/motion/CountUp";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { AppAssembly } from "@/components/visuals/AppAssembly";
 
 export type HeroMetrics = {
   liveProducts: number;
@@ -49,6 +50,8 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
       <div className="grain pointer-events-none absolute inset-0 opacity-50" />
 
       <div className="container-edge relative py-28 md:py-36">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_400px]">
+        <div>
         <motion.p
           className="eyebrow"
           initial={{ opacity: 0, y: 10 }}
@@ -101,6 +104,12 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
             </a>
           </Magnetic>
         </motion.div>
+        </div>
+
+        <div className="hidden lg:block">
+          <AppAssembly />
+        </div>
+        </div>
 
         {/* Live aggregate ticker — designed mono ledger strip, real non-private metrics */}
         <motion.dl
