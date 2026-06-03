@@ -2,6 +2,7 @@
 
 import { Reveal } from "@/components/motion/Reveal";
 import { useI18n } from "@/components/i18n/LanguageProvider";
+import { PipelineFlow } from "@/components/visuals/PipelineFlow";
 
 export function Process() {
   const { t } = useI18n();
@@ -17,7 +18,11 @@ export function Process() {
           </h2>
         </Reveal>
 
-        <ol className="mt-12 divide-y divide-line border-y border-line">
+        <Reveal delay={0.1} className="mt-12">
+          <PipelineFlow className="h-auto w-full max-w-3xl" />
+        </Reveal>
+
+        <ol className="mt-8 divide-y divide-line border-y border-line">
           {t.process.steps.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.05}>
               <li className="grid gap-2 py-7 transition-colors md:grid-cols-[88px_260px_1fr] md:items-baseline md:gap-8">

@@ -131,8 +131,30 @@
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
+/* Orbiting nodes around a core (monochrome AI motif) */
+@keyframes orbit {
+  0% { transform: rotate(calc(var(--angle, 0) * 1deg)) translateX(calc(var(--radius, 80) * 1px)) rotate(calc(var(--angle, 0) * -1deg)); }
+  100% { transform: rotate(calc(var(--angle, 0) * 1deg + 360deg)) translateX(calc(var(--radius, 80) * 1px)) rotate(calc(var(--angle, 0) * -1deg - 360deg)); }
+}
+.orbit-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -4px;
+  margin-left: -4px;
+  animation: orbit calc(var(--duration, 20) * 1s) linear infinite;
+}
+
+@keyframes corePulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+.core-pulse { animation: corePulse 3.4s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .aurora-1,
-  .aurora-2 { animation: none; }
+  .aurora-2,
+  .orbit-node,
+  .core-pulse { animation: none; }
 }

@@ -18,6 +18,7 @@ type Dict = {
   capabilities: {
     eyebrow: string;
     heading: string;
+    lead: string;
     items: { title: string; body: string }[];
   };
   process: {
@@ -69,6 +70,7 @@ export const t: Record<Lang, Dict> = {
     capabilities: {
       eyebrow: "Wat we doen",
       heading: "Wij bouwen de software die anderen enkel uitschrijven.",
+      lead: "Echte software, draaiend in productie — van de AI-laag tot de infrastructuur eronder.",
       items: [
         { title: "Volledige producten, end-to-end", body: "Niet één feature, het hele ding — auth, betalingen, dashboards, infra, de saaie 80%. We bouwden ticketing-, planning- en e-commerce­platformen die met echt geld werken." },
         { title: "AI-agents & automatisatie", body: "Context-bewuste agents die operations, support en taken in meerdere stappen afhandelen. Wij bouwen de pipeline, koppelen ze aan jouw tools, en houden een mens in de lus waar het telt." },
@@ -138,6 +140,7 @@ export const t: Record<Lang, Dict> = {
     capabilities: {
       eyebrow: "What we do",
       heading: "We build the software other people only spec.",
+      lead: "Real software, running in production — from the AI layer down to the infrastructure it sits on.",
       items: [
         { title: "Full products, end to end", body: "Not a feature, the whole thing — auth, payments, dashboards, infra, the boring 80%. We've shipped ticketing, scheduling and e-commerce platforms that handle real money." },
         { title: "AI agents & automation", body: "Context-aware agents that handle operations, support and multi-step work. We build the pipeline, wire it to your tools, and keep a human in the loop where it matters." },
