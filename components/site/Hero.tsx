@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { CountUp } from "@/components/motion/CountUp";
+import { Magnetic } from "@/components/motion/Magnetic";
 
 export type HeroMetrics = {
   liveProducts: number;
@@ -22,8 +23,18 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
     { label: t.hero.stats.visitors, value: metrics.visitors },
   ];
 
+  function onMove(e: React.MouseEvent<HTMLElement>) {
+    const r = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  }
+
   return (
-    <section className="relative overflow-hidden border-b border-line">
+    <section
+      onMouseMove={onMove}
+      className="hero-surface relative overflow-hidden border-b border-line"
+    >
+      <div className="hero-dots" />
       {/* monochrome aurora + glow + grain */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
@@ -47,14 +58,16 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
           {t.hero.eyebrow}
         </motion.p>
 
-        <motion.h1
-          className="text-gradient mt-6 max-w-3xl text-[40px] font-semibold leading-[1.02] tracking-[-0.035em] md:text-[68px]"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.06, ease }}
-        >
-          {t.hero.headline}
-        </motion.h1>
+        <div className="mt-6 max-w-3xl overflow-hidden pb-[0.12em]">
+          <motion.h1
+            className="text-gradient text-[40px] font-semibold leading-[1.02] tracking-[-0.035em] md:text-[68px]"
+            initial={{ y: "115%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.95, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {t.hero.headline}
+          </motion.h1>
+        </div>
 
         <motion.p
           className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
@@ -71,18 +84,22 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.22, ease }}
         >
-          <a
-            href="#contact"
-            className="rounded-md bg-fg px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
-          >
-            {t.hero.ctaPrimary}
-          </a>
-          <a
-            href="#products"
-            className="rounded-md border border-line bg-surface px-5 py-2.5 text-sm font-medium text-fg transition-colors hover:border-dim hover:bg-surface-2"
-          >
-            {t.hero.ctaSecondary}
-          </a>
+          <Magnetic>
+            <a
+              href="#contact"
+              className="inline-block rounded-md bg-fg px-5 py-2.5 text-sm font-semibold text-ink"
+            >
+              {t.hero.ctaPrimary}
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="#products"
+              className="inline-block rounded-md border border-line bg-surface px-5 py-2.5 text-sm font-medium text-fg transition-colors hover:border-dim hover:bg-surface-2"
+            >
+              {t.hero.ctaSecondary}
+            </a>
+          </Magnetic>
         </motion.div>
 
         {/* Live aggregate ticker — designed mono ledger strip, real non-private metrics */}

@@ -90,6 +90,20 @@
 .spotlight:hover::before { opacity: 1; }
 .spotlight > * { position: relative; z-index: 1; }
 
+/* Interactive dot-grid that lights up under the cursor (hero) */
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.16) 1px, transparent 0);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(200px circle at var(--mx, -200px) var(--my, -200px), #000 0%, transparent 65%);
+  mask-image: radial-gradient(200px circle at var(--mx, -200px) var(--my, -200px), #000 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.hero-surface:hover .hero-dots { opacity: 1; }
+
 /* Slow-drifting monochrome aurora behind the hero */
 @keyframes drift1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
