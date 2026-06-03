@@ -1,4 +1,5 @@
 import type { ProjectData, ProjectEntry } from "./types";
+import { fetchSupershift } from "./adapters/supershift";
 
 /**
  * MOCK DATA REGISTRY
@@ -260,9 +261,20 @@ const MOCK: ProjectData[] = [
   },
 ];
 
+/**
+ * Live adapters by project id. A project listed here fetches real data (with the
+ * mock entry as its fallback); everything else returns mock. To take another
+ * project live, add its adapter here — nothing else in the dash changes.
+ */
+const LIVE: Record<string, (base: ProjectData) => Promise<ProjectData>> = {
+  supershift: fetchSupershift,
+};
+
 export const PROJECTS: ProjectEntry[] = MOCK.map((data) => ({
   id: data.id,
-  fetch: async () => ({ ...data }),
+  fetch: LIVE[data.id]
+    ? () => LIVE[data.id](data)
+    : async () => ({ ...data }),
 }));
 
 export const PROJECT_IDS = MOCK.map((p) => p.id);
