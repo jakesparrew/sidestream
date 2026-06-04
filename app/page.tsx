@@ -2,9 +2,11 @@ import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { Marquee } from "@/components/site/Marquee";
 import { Products } from "@/components/site/Products";
+import { ForClients } from "@/components/site/ForClients";
 import { Capabilities } from "@/components/site/Capabilities";
 import { Process } from "@/components/site/Process";
 import { StudioModel } from "@/components/site/StudioModel";
+import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
@@ -44,9 +46,11 @@ export default async function Home() {
         <Hero metrics={metrics} />
         <Marquee projects={projects} />
         <Products projects={projects} />
+        <ForClients />
         <Capabilities />
         <Process />
         <StudioModel />
+        <Faq />
         <Contact />
       </main>
       <Footer />

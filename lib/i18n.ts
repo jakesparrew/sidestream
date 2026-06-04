@@ -11,7 +11,19 @@ type Dict = {
     sub: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    trust: string[];
     stats: { liveProducts: string; usersServed: string; ticketsSold: string; visitors: string };
+  };
+  forClients: {
+    eyebrow: string;
+    heading: string;
+    sub: string;
+    items: { situation: string; outcome: string }[];
+  };
+  faq: {
+    eyebrow: string;
+    heading: string;
+    items: { q: string; a: string }[];
   };
   marquee: string;
   products: { eyebrow: string; heading: string; sub: string; visit: string };
@@ -28,7 +40,17 @@ type Dict = {
     steps: { title: string; body: string }[];
   };
   studio: { eyebrow: string; quote: string; body: string };
-  contact: { eyebrow: string; heading: string; sub: string; cta: string };
+  contact: {
+    eyebrow: string;
+    heading: string;
+    sub: string;
+    cta: string;
+    whatNext: string;
+    namePlaceholder: string;
+    projectPlaceholder: string;
+    send: string;
+    trust: string;
+  };
   footer: { tagline: string };
   dash: {
     subtitle: string;
@@ -59,9 +81,33 @@ export const t: Record<Lang, Dict> = {
       sub: "Wij leveren geen slide-deck. Wij bouwen software en runnen ze daarna zelf — live producten met echte gebruikers, betalende klanten en uptime om te verdedigen. Dat is de portfolio hieronder.",
       ctaPrimary: "Plan een kennismaking",
       ctaSecondary: "Bekijk wat we bouwden",
+      trust: ["Gratis scoping-gesprek", "Antwoord binnen een dag", "Jij bezit alle code"],
       stats: { liveProducts: "Live producten", usersServed: "Gebruikers bereikt", ticketsSold: "Tickets verkocht", visitors: "Bezoekers / maand" },
     },
     marquee: "Gebouwd en gedraaid door Sidestream",
+    forClients: {
+      eyebrow: "Voor jou",
+      heading: "Wat we voor jou kunnen bouwen.",
+      sub: "Bijna alles wat we zelf draaien, bouwen we ook voor jou. Een paar manieren waarop teams ons inzetten:",
+      items: [
+        { situation: "Je hebt een idee, geen product.", outcome: "We bouwen het hele ding — design, auth, betalingen, infra, lancering. Een echt product, geen prototype." },
+        { situation: "Een handmatig proces vreet de uren van je team.", outcome: "We automatiseren het met AI-agents en workflows die in productie draaien, met een mens in de lus waar het telt." },
+        { situation: "Je hebt een app, maar security houdt je wakker.", outcome: "We auditen ze, harden auth en secrets, zetten je data op slot en richten monitoring in die ons als eerste belt." },
+        { situation: "Je hebt iets gelanceerd, maar niemand draait het.", outcome: "Wij draaien het — uptime, support en gestage iteratie. Het deel dat de meeste bureaus overslaan." },
+      ],
+    },
+    faq: {
+      eyebrow: "Veelgestelde vragen",
+      heading: "Wat je waarschijnlijk wil weten.",
+      items: [
+        { q: "Hoe lang duurt een project?", a: "Een gerichte MVP is meestal 4–8 weken. We leveren in kleine stappen op jouw échte data, dus je ziet vroeg werkende software — geen big-bang aan het eind." },
+        { q: "Hoe prijzen jullie?", a: "Vaste scope krijgt een vaste prijs; doorlopend werk is een maandelijkse retainer. Geen verrassingen per gebruiker, geen contract van twaalf maanden. We scopen het in het eerste gesprek." },
+        { q: "Wie bezit de code?", a: "Jij — volledig. Jouw repo, jouw infra, jouw accounts. We dragen alles over en documenteren het. Geen gijzeling." },
+        { q: "Onderhouden jullie wat je bouwt?", a: "Als je dat wil. We draaien onze eigen producten, dus de jouwe draaien — uptime, monitoring, iteratie — is bij ons de standaard, geen bijzaak." },
+        { q: "Kunnen jullie met onze bestaande stack werken?", a: "Meestal wel. We zijn pragmatisch over tools — we werken in jouw stack in plaats van een rewrite te forceren, tenzij een rewrite écht goedkoper is." },
+        { q: "Waar zijn jullie gevestigd?", a: "België. We werken met teams door heel Europa, in het Nederlands of Engels, vooral async met een wekelijkse check-in." },
+      ],
+    },
     products: {
       eyebrow: "Geselecteerd werk",
       heading: "Producten die we bouwden — en nog steeds draaien.",
@@ -111,6 +157,11 @@ export const t: Record<Lang, Dict> = {
       heading: "Een product te bouwen, of een proces om te killen?",
       sub: "Vertel ons wat je wil shippen. Past het, dan scopen we het in een kort kennismakings­gesprek — geen deck nodig.",
       cta: "Plan een kennismaking",
+      whatNext: "Je hoort binnen een dag iets terug — meestal met een paar scherpe vragen, geen verkooppraatje.",
+      namePlaceholder: "Je naam",
+      projectPlaceholder: "Wat wil je bouwen, automatiseren of beveiligen?",
+      send: "Verstuur",
+      trust: "Gratis scoping-gesprek · Antwoord binnen een dag · Jij bezit alle code",
     },
     footer: { tagline: "Een venture studio. We bouwen software, en draaien ze dan." },
     dash: {
@@ -140,9 +191,33 @@ export const t: Record<Lang, Dict> = {
       sub: "We don't hand you a deck. We build software, then run it — live products with real users, paying customers, and uptime to defend. That's the portfolio below.",
       ctaPrimary: "Book an intro call",
       ctaSecondary: "See what we've shipped",
+      trust: ["Free scoping call", "Reply within a day", "You own all the code"],
       stats: { liveProducts: "Live products", usersServed: "Users served", ticketsSold: "Tickets sold", visitors: "Monthly visitors" },
     },
     marquee: "Built and operated by Sidestream",
+    forClients: {
+      eyebrow: "For you",
+      heading: "What we can build for you.",
+      sub: "Almost everything we run ourselves, we'll build for you too. A few ways teams use us:",
+      items: [
+        { situation: "You have an idea, not a product.", outcome: "We ship the whole thing — design, auth, payments, infra, launch. A real product, not a prototype." },
+        { situation: "A manual process is eating your team's hours.", outcome: "We automate it with AI agents and workflows that run in production, with a human in the loop where it counts." },
+        { situation: "You've got an app, but security worries you.", outcome: "We audit it, harden auth and secrets, lock down your data, and set up monitoring that pages us first." },
+        { situation: "You shipped something, but no one's running it.", outcome: "We operate it — uptime, support, and steady iteration. The part most agencies skip." },
+      ],
+    },
+    faq: {
+      eyebrow: "FAQ",
+      heading: "What you're probably wondering.",
+      items: [
+        { q: "How long does a project take?", a: "A focused MVP is usually 4–8 weeks. We ship in small increments against your real data, so you see working software early — not a big-bang reveal at the end." },
+        { q: "How do you price?", a: "Fixed-scope projects get a fixed price; ongoing work is a monthly retainer. No per-seat surprises, no twelve-month lock-in. We scope it on the first call." },
+        { q: "Who owns the code?", a: "You do — fully. Your repo, your infra, your accounts. We hand everything over and document it. No hostage situations." },
+        { q: "Do you maintain what you build?", a: "If you want us to. We run our own products, so operating yours — uptime, monitoring, iteration — is the default here, not an afterthought." },
+        { q: "Can you work with our existing stack?", a: "Usually yes. We're pragmatic about tools — we'll work in your stack rather than force a rewrite, unless a rewrite is genuinely the cheaper path." },
+        { q: "Where are you based?", a: "Belgium. We work with teams across Europe, in English or Dutch, mostly async with a weekly check-in." },
+      ],
+    },
     products: {
       eyebrow: "Selected work",
       heading: "Products we built — and still run.",
@@ -192,6 +267,11 @@ export const t: Record<Lang, Dict> = {
       heading: "Got a product to build, or a process to kill?",
       sub: "Tell us what you're trying to ship. If it's a fit, we'll scope it on a short intro call — no deck required.",
       cta: "Book an intro call",
+      whatNext: "You'll hear back within a day — usually with a couple of sharp questions, not a sales script.",
+      namePlaceholder: "Your name",
+      projectPlaceholder: "What do you want to build, automate or secure?",
+      send: "Send",
+      trust: "Free scoping call · Reply within a day · You own all the code",
     },
     footer: { tagline: "A venture studio. We build software, then run it." },
     dash: {

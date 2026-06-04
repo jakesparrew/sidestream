@@ -13,7 +13,7 @@ export function Capabilities() {
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto]">
           <Reveal className="max-w-2xl">
             <p className="eyebrow flex items-center gap-2">
-              <span className="text-dim">02</span> {t.capabilities.eyebrow}
+              <span className="text-dim">03</span> {t.capabilities.eyebrow}
             </p>
             <h2 className="text-gradient mt-4 text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
               {t.capabilities.heading}
@@ -45,9 +45,7 @@ export function Capabilities() {
         <Reveal delay={0.05} className="mt-4">
           <div className="grid items-center gap-8 overflow-hidden rounded-xl border border-line bg-surface p-7 md:grid-cols-[1fr_auto] md:gap-12 md:p-10">
             <div className="max-w-xl">
-              <p className="eyebrow flex items-center gap-2">
-                <span className="text-dim">05</span> {t.capabilities.security.eyebrow}
-              </p>
+              <p className="eyebrow">{t.capabilities.security.eyebrow}</p>
               <h3 className="mt-4 text-2xl font-semibold tracking-[-0.02em] text-fg md:text-3xl">
                 {t.capabilities.security.title}
               </h3>

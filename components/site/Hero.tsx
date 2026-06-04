@@ -104,6 +104,20 @@ export function Hero({ metrics }: { metrics: HeroMetrics }) {
             </a>
           </Magnetic>
         </motion.div>
+
+        <motion.ul
+          className="mt-6 flex flex-wrap gap-x-5 gap-y-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          {t.hero.trust.map((item) => (
+            <li key={item} className="flex items-center gap-2 text-sm text-muted">
+              <span className="text-fg">✓</span>
+              {item}
+            </li>
+          ))}
+        </motion.ul>
         </div>
 
         <div className="hidden lg:block">
