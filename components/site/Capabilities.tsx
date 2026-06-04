@@ -3,6 +3,7 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { CpuChip } from "@/components/visuals/CpuChip";
+import { ShieldScan } from "@/components/visuals/ShieldScan";
 
 export function Capabilities() {
   const { t } = useI18n();
@@ -39,6 +40,34 @@ export function Capabilities() {
             </Reveal>
           ))}
         </div>
+
+        {/* Featured offering — cybersecurity & protection */}
+        <Reveal delay={0.05} className="mt-4">
+          <div className="grid items-center gap-8 overflow-hidden rounded-xl border border-line bg-surface p-7 md:grid-cols-[1fr_auto] md:gap-12 md:p-10">
+            <div className="max-w-xl">
+              <p className="eyebrow flex items-center gap-2">
+                <span className="text-dim">05</span> {t.capabilities.security.eyebrow}
+              </p>
+              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.02em] text-fg md:text-3xl">
+                {t.capabilities.security.title}
+              </h3>
+              <p className="mt-4 leading-relaxed text-muted">
+                {t.capabilities.security.body}
+              </p>
+              <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                {t.capabilities.security.points.map((p) => (
+                  <li key={p} className="flex items-start gap-2.5 text-sm text-fg">
+                    <span className="mono mt-0.5 text-dim">↳</span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mx-auto w-full max-w-[200px] md:max-w-[220px]">
+              <ShieldScan className="h-auto w-full" />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

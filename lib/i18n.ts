@@ -20,6 +20,7 @@ type Dict = {
     heading: string;
     lead: string;
     items: { title: string; body: string }[];
+    security: { eyebrow: string; title: string; body: string; points: string[] };
   };
   process: {
     eyebrow: string;
@@ -77,6 +78,17 @@ export const t: Record<Lang, Dict> = {
         { title: "Support- & ops-bots", body: "Chatbots in jouw huisstijl met automatische kennisrouting. Getest in productie, niet in een demo — eentje van ons draait op 95% antwoordnauwkeurigheid op live tickets." },
         { title: "Consulting die eindigt in code", body: "We brengen je knelpunten in kaart en prioriteren de impactvolle. Maar de oplevering is werkende software, geen slide-deck en een factuur." },
       ],
+      security: {
+        eyebrow: "Beveiliging & bescherming",
+        title: "Beveiliging die ingebouwd zit — niet erop geplakt.",
+        body: "Wij draaien live producten die betalingen verwerken en persoonsgegevens bewaren, dus beveiliging is bij ons basis, geen meerprijs. We auditen jouw app zoals we de onze auditen — vinden wat blootligt, zetten het op slot en blijven kijken.",
+        points: [
+          "Security- & penetratie-audits",
+          "Auth-, toegang- & secrets-hardening",
+          "GDPR-waardige gegevensbescherming",
+          "Monitoring, alerting & incident response",
+        ],
+      },
     },
     process: {
       eyebrow: "Hoe we werken",
@@ -147,6 +159,17 @@ export const t: Record<Lang, Dict> = {
         { title: "Support & ops bots", body: "Brand-matched chatbots with automated knowledge routing. Tested in production, not in a demo — one of ours runs at 95% answer accuracy on live tickets." },
         { title: "Consulting that ends in shipped code", body: "We'll map your bottlenecks and prioritise the high-impact ones. But the deliverable is working software, not a slide deck and an invoice." },
       ],
+      security: {
+        eyebrow: "Security & protection",
+        title: "Security that's built in — not bolted on.",
+        body: "We run live products that take payments and hold personal data, so security is table stakes here, not an upsell. We'll audit your app the way we audit ours — find what's exposed, lock it down, and keep watching.",
+        points: [
+          "Security & penetration audits",
+          "Auth, access & secrets hardening",
+          "GDPR-grade data protection",
+          "Monitoring, alerting & incident response",
+        ],
+      },
     },
     process: {
       eyebrow: "How we work",
