@@ -32,13 +32,12 @@ export function Contact() {
       <div className="container-edge relative grid items-start gap-12 py-24 md:py-32 lg:grid-cols-2">
         <Reveal>
           <p className="eyebrow flex items-center gap-2">
-            <span className="text-dim">07</span> {t.contact.eyebrow}
+            <span className="text-dim">06</span> {t.contact.eyebrow}
           </p>
           <h2 className="text-gradient mt-4 text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
             {t.contact.heading}
           </h2>
-          <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted">{t.contact.sub}</p>
-          <p className="mt-6 max-w-md leading-relaxed text-muted">{t.contact.whatNext}</p>
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-muted">{t.contact.whatNext}</p>
           <a
             href={`mailto:${EMAIL}`}
             className="mono mt-6 inline-block text-sm text-muted transition-colors hover:text-fg"

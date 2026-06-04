@@ -7,9 +7,9 @@ export function Nav() {
   const { t } = useI18n();
   const links = [
     { href: "#products", label: t.nav.products },
-    { href: "#capabilities", label: t.nav.capabilities },
+    { href: "#for-you", label: t.nav.capabilities },
     { href: "#process", label: t.nav.process },
-    { href: "#studio", label: t.nav.studio },
+    { href: "#faq", label: t.nav.faq },
   ];
 
   return (

@@ -4,7 +4,7 @@ export const LANGS: Lang[] = ["nl", "en"];
 export const DEFAULT_LANG: Lang = "nl";
 
 type Dict = {
-  nav: { products: string; capabilities: string; process: string; studio: string; book: string };
+  nav: { products: string; capabilities: string; process: string; studio: string; faq: string; book: string };
   hero: {
     eyebrow: string;
     headline: string;
@@ -74,11 +74,11 @@ type Dict = {
 
 export const t: Record<Lang, Dict> = {
   nl: {
-    nav: { products: "Producten", capabilities: "Wat we doen", process: "Hoe we werken", studio: "Studio", book: "Plan een gesprek" },
+    nav: { products: "Producten", capabilities: "Wat we doen", process: "Hoe we werken", studio: "Studio", faq: "FAQ", book: "Plan een gesprek" },
     hero: {
       eyebrow: "Sidestream · Venture Studio",
       headline: "Een engineering­studio die echte producten bouwt én draait.",
-      sub: "Wij leveren geen slide-deck. Wij bouwen software en runnen ze daarna zelf — live producten met echte gebruikers, betalende klanten en uptime om te verdedigen. Dat is de portfolio hieronder.",
+      sub: "Geen slide-deck. Wij bouwen software én draaien ze zelf — live producten met echte gebruikers en omzet.",
       ctaPrimary: "Plan een kennismaking",
       ctaSecondary: "Bekijk wat we bouwden",
       trust: ["Gratis scoping-gesprek", "Antwoord binnen een dag", "Jij bezit alle code"],
@@ -88,24 +88,24 @@ export const t: Record<Lang, Dict> = {
     forClients: {
       eyebrow: "Voor jou",
       heading: "Wat we voor jou kunnen bouwen.",
-      sub: "Bijna alles wat we zelf draaien, bouwen we ook voor jou. Een paar manieren waarop teams ons inzetten:",
+      sub: "Bijna alles wat we zelf draaien, bouwen we ook voor jou.",
       items: [
-        { situation: "Je hebt een idee, geen product.", outcome: "We bouwen het hele ding — design, auth, betalingen, infra, lancering. Een echt product, geen prototype." },
-        { situation: "Een handmatig proces vreet de uren van je team.", outcome: "We automatiseren het met AI-agents en workflows die in productie draaien, met een mens in de lus waar het telt." },
-        { situation: "Je hebt een app, maar security houdt je wakker.", outcome: "We auditen ze, harden auth en secrets, zetten je data op slot en richten monitoring in die ons als eerste belt." },
-        { situation: "Je hebt iets gelanceerd, maar niemand draait het.", outcome: "Wij draaien het — uptime, support en gestage iteratie. Het deel dat de meeste bureaus overslaan." },
+        { situation: "Je hebt een idee, geen product.", outcome: "We bouwen het hele ding — design, build, infra, lancering." },
+        { situation: "Een handmatig proces vreet uren van je team.", outcome: "We automatiseren het met AI-agents die in productie draaien." },
+        { situation: "Je hebt een app, maar security houdt je wakker.", outcome: "We auditen, harden en bewaken ze alsof het de onze zijn." },
+        { situation: "Je hebt iets gelanceerd, maar niemand draait het.", outcome: "Wij draaien het — uptime, support, iteratie." },
       ],
     },
     faq: {
       eyebrow: "Veelgestelde vragen",
       heading: "Wat je waarschijnlijk wil weten.",
       items: [
-        { q: "Hoe lang duurt een project?", a: "Een gerichte MVP is meestal 4–8 weken. We leveren in kleine stappen op jouw échte data, dus je ziet vroeg werkende software — geen big-bang aan het eind." },
-        { q: "Hoe prijzen jullie?", a: "Vaste scope krijgt een vaste prijs; doorlopend werk is een maandelijkse retainer. Geen verrassingen per gebruiker, geen contract van twaalf maanden. We scopen het in het eerste gesprek." },
-        { q: "Wie bezit de code?", a: "Jij — volledig. Jouw repo, jouw infra, jouw accounts. We dragen alles over en documenteren het. Geen gijzeling." },
-        { q: "Onderhouden jullie wat je bouwt?", a: "Als je dat wil. We draaien onze eigen producten, dus de jouwe draaien — uptime, monitoring, iteratie — is bij ons de standaard, geen bijzaak." },
-        { q: "Kunnen jullie met onze bestaande stack werken?", a: "Meestal wel. We zijn pragmatisch over tools — we werken in jouw stack in plaats van een rewrite te forceren, tenzij een rewrite écht goedkoper is." },
-        { q: "Waar zijn jullie gevestigd?", a: "België. We werken met teams door heel Europa, in het Nederlands of Engels, vooral async met een wekelijkse check-in." },
+        { q: "Hoe lang duurt een project?", a: "Een gerichte MVP is 4–8 weken. We leveren in kleine stappen, dus je ziet vroeg werkende software." },
+        { q: "Hoe prijzen jullie?", a: "Vaste scope, vaste prijs. Doorlopend werk is een maandelijkse retainer. Geen lock-in." },
+        { q: "Wie bezit de code?", a: "Jij — volledig. Jouw repo, infra en accounts. We dragen alles over." },
+        { q: "Onderhouden jullie wat je bouwt?", a: "Als je dat wil. We draaien onze eigen producten, dus de jouwe draaien is de standaard." },
+        { q: "Kunnen jullie met onze stack werken?", a: "Meestal wel. We werken in jouw stack in plaats van een rewrite te forceren." },
+        { q: "Waar zijn jullie gevestigd?", a: "België. We werken door heel Europa, in het Nederlands of Engels." },
       ],
     },
     products: {
@@ -127,7 +127,7 @@ export const t: Record<Lang, Dict> = {
       security: {
         eyebrow: "Beveiliging & bescherming",
         title: "Beveiliging die ingebouwd zit — niet erop geplakt.",
-        body: "Wij draaien live producten die betalingen verwerken en persoonsgegevens bewaren, dus beveiliging is bij ons basis, geen meerprijs. We auditen jouw app zoals we de onze auditen — vinden wat blootligt, zetten het op slot en blijven kijken.",
+        body: "Wij draaien producten die betalingen en persoonsgegevens raken, dus beveiliging is basis, geen meerprijs. We auditen die van jou zoals die van ons.",
         points: [
           "Security- & penetratie-audits",
           "Auth-, toegang- & secrets-hardening",
@@ -140,11 +140,11 @@ export const t: Record<Lang, Dict> = {
       eyebrow: "Hoe we werken",
       heading: "Van idee tot iets dat in productie draait.",
       steps: [
-        { title: "Vind het knelpunt", body: "We brengen in kaart waar tijd en geld echt weglekken, en kiezen de paar fixes die het waard zijn om eerst te bouwen." },
-        { title: "Architecteer de workflow", body: "Een concreet plan: dataflow, integraties, waar AI helpt en waar net niet." },
-        { title: "Ontwerp, bouw, test", body: "We leveren een werkend systeem op jouw échte data — en breken het voor je gebruikers dat doen." },
-        { title: "Keur het plan goed", body: "Jij tekent af op de implementatie voor we opschalen. Geen verrassingen, geen scope drift." },
-        { title: "Deploy & operate", body: "We lanceren, monitoren, verfijnen en houden het draaiend. Want meestal draaien wij het mee." },
+        { title: "Vind het knelpunt", body: "We brengen in kaart waar tijd en geld echt weglekken." },
+        { title: "Architecteer de workflow", body: "Een concreet plan: dataflow, integraties, waar AI past." },
+        { title: "Ontwerp, bouw, test", body: "Een werkend systeem op jouw échte data, gebroken voor je gebruikers dat doen." },
+        { title: "Keur het plan goed", body: "Jij tekent af voor we opschalen. Geen scope drift." },
+        { title: "Deploy & operate", body: "We lanceren, monitoren en houden het draaiend." },
       ],
     },
     studio: {
@@ -184,11 +184,11 @@ export const t: Record<Lang, Dict> = {
     },
   },
   en: {
-    nav: { products: "Products", capabilities: "What we do", process: "How we work", studio: "Studio", book: "Book a call" },
+    nav: { products: "Products", capabilities: "What we do", process: "How we work", studio: "Studio", faq: "FAQ", book: "Book a call" },
     hero: {
       eyebrow: "Sidestream · Venture Studio",
       headline: "An engineering studio that ships and operates real products.",
-      sub: "We don't hand you a deck. We build software, then run it — live products with real users, paying customers, and uptime to defend. That's the portfolio below.",
+      sub: "No deck. We build software and run it ourselves — live products with real users and revenue.",
       ctaPrimary: "Book an intro call",
       ctaSecondary: "See what we've shipped",
       trust: ["Free scoping call", "Reply within a day", "You own all the code"],
@@ -198,24 +198,24 @@ export const t: Record<Lang, Dict> = {
     forClients: {
       eyebrow: "For you",
       heading: "What we can build for you.",
-      sub: "Almost everything we run ourselves, we'll build for you too. A few ways teams use us:",
+      sub: "Almost everything we run ourselves, we'll build for you too.",
       items: [
-        { situation: "You have an idea, not a product.", outcome: "We ship the whole thing — design, auth, payments, infra, launch. A real product, not a prototype." },
-        { situation: "A manual process is eating your team's hours.", outcome: "We automate it with AI agents and workflows that run in production, with a human in the loop where it counts." },
-        { situation: "You've got an app, but security worries you.", outcome: "We audit it, harden auth and secrets, lock down your data, and set up monitoring that pages us first." },
-        { situation: "You shipped something, but no one's running it.", outcome: "We operate it — uptime, support, and steady iteration. The part most agencies skip." },
+        { situation: "You have an idea, not a product.", outcome: "We ship the whole thing — design, build, infra, launch." },
+        { situation: "A manual process eats your team's hours.", outcome: "We automate it with AI agents that run in production." },
+        { situation: "You've got an app, but security worries you.", outcome: "We audit it, harden it, and watch it like it's ours." },
+        { situation: "You shipped something, but no one runs it.", outcome: "We operate it — uptime, support, iteration." },
       ],
     },
     faq: {
       eyebrow: "FAQ",
       heading: "What you're probably wondering.",
       items: [
-        { q: "How long does a project take?", a: "A focused MVP is usually 4–8 weeks. We ship in small increments against your real data, so you see working software early — not a big-bang reveal at the end." },
-        { q: "How do you price?", a: "Fixed-scope projects get a fixed price; ongoing work is a monthly retainer. No per-seat surprises, no twelve-month lock-in. We scope it on the first call." },
-        { q: "Who owns the code?", a: "You do — fully. Your repo, your infra, your accounts. We hand everything over and document it. No hostage situations." },
-        { q: "Do you maintain what you build?", a: "If you want us to. We run our own products, so operating yours — uptime, monitoring, iteration — is the default here, not an afterthought." },
-        { q: "Can you work with our existing stack?", a: "Usually yes. We're pragmatic about tools — we'll work in your stack rather than force a rewrite, unless a rewrite is genuinely the cheaper path." },
-        { q: "Where are you based?", a: "Belgium. We work with teams across Europe, in English or Dutch, mostly async with a weekly check-in." },
+        { q: "How long does a project take?", a: "A focused MVP is 4–8 weeks. We ship in small increments, so you see working software early." },
+        { q: "How do you price?", a: "Fixed scope, fixed price. Ongoing work is a monthly retainer. No lock-in." },
+        { q: "Who owns the code?", a: "You do — fully. Your repo, infra and accounts. We hand it all over." },
+        { q: "Do you maintain what you build?", a: "If you want. We run our own products, so operating yours is the default." },
+        { q: "Can you work with our stack?", a: "Usually yes. We work in your stack rather than force a rewrite." },
+        { q: "Where are you based?", a: "Belgium. We work across Europe, in English or Dutch." },
       ],
     },
     products: {
@@ -237,7 +237,7 @@ export const t: Record<Lang, Dict> = {
       security: {
         eyebrow: "Security & protection",
         title: "Security that's built in — not bolted on.",
-        body: "We run live products that take payments and hold personal data, so security is table stakes here, not an upsell. We'll audit your app the way we audit ours — find what's exposed, lock it down, and keep watching.",
+        body: "We run products that touch payments and personal data, so security is table stakes, not an upsell. We audit yours the way we audit ours.",
         points: [
           "Security & penetration audits",
           "Auth, access & secrets hardening",
@@ -250,11 +250,11 @@ export const t: Record<Lang, Dict> = {
       eyebrow: "How we work",
       heading: "From idea to a thing that runs in production.",
       steps: [
-        { title: "Find the bottleneck", body: "We map where time and money actually leak, and pick the few fixes worth building first." },
-        { title: "Architect the workflow", body: "A concrete plan: data flow, integrations, where AI helps and where it shouldn't." },
-        { title: "Design, build, test", body: "We ship a working system against your real data — and break it before your users do." },
-        { title: "Approve the plan", body: "You sign off on the implementation before we scale it. No surprises, no scope drift." },
-        { title: "Deploy & operate", body: "We launch, monitor, refine, and keep it running. Because usually, we're running it too." },
+        { title: "Find the bottleneck", body: "We map where time and money actually leak." },
+        { title: "Architect the workflow", body: "A concrete plan: data flow, integrations, where AI fits." },
+        { title: "Design, build, test", body: "A working system on your real data, broken before your users break it." },
+        { title: "Approve the plan", body: "You sign off before we scale. No scope drift." },
+        { title: "Deploy & operate", body: "We launch, monitor, and keep it running." },
       ],
     },
     studio: {

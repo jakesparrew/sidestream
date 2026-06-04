@@ -3,7 +3,6 @@ import { Hero } from "@/components/site/Hero";
 import { Marquee } from "@/components/site/Marquee";
 import { Products } from "@/components/site/Products";
 import { ForClients } from "@/components/site/ForClients";
-import { Capabilities } from "@/components/site/Capabilities";
 import { Process } from "@/components/site/Process";
 import { StudioModel } from "@/components/site/StudioModel";
 import { Faq } from "@/components/site/Faq";
@@ -47,7 +46,6 @@ export default async function Home() {
         <Marquee projects={projects} />
         <Products projects={projects} />
         <ForClients />
-        <Capabilities />
         <Process />
         <StudioModel />
         <Faq />
