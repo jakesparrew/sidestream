@@ -4,7 +4,7 @@ export const LANGS: Lang[] = ["nl", "en"];
 export const DEFAULT_LANG: Lang = "nl";
 
 type Dict = {
-  nav: { products: string; capabilities: string; process: string; studio: string; faq: string; book: string };
+  nav: { products: string; capabilities: string; process: string; studio: string; faq: string; tools: string; book: string };
   hero: {
     eyebrow: string;
     headline: string;
@@ -24,6 +24,50 @@ type Dict = {
     eyebrow: string;
     heading: string;
     items: { q: string; a: string }[];
+  };
+  tools: {
+    nav: string;
+    eyebrow: string;
+    heading: string;
+    sub: string;
+    teaser: { eyebrow: string; title: string; body: string; cta: string };
+    disclaimer: string;
+    build: {
+      title: string;
+      sub: string;
+      typeLabel: string;
+      types: { id: string; label: string }[];
+      sizeLabel: string;
+      sizes: { id: string; label: string }[];
+      addonsLabel: string;
+      addonList: { id: string; label: string }[];
+      rushLabel: string;
+      estimateLabel: string;
+      timelineLabel: string;
+      weeks: string;
+      cta: string;
+    };
+    savings: {
+      title: string;
+      sub: string;
+      peopleLabel: string;
+      hoursLabel: string;
+      costLabel: string;
+      autoLabel: string;
+      hoursSavedLabel: string;
+      moneySavedLabel: string;
+      perYear: string;
+      cta: string;
+    };
+    lead: {
+      title: string;
+      namePlaceholder: string;
+      emailPlaceholder: string;
+      send: string;
+      sending: string;
+      success: string;
+      error: string;
+    };
   };
   marquee: string;
   products: { eyebrow: string; heading: string; sub: string; visit: string };
@@ -74,7 +118,7 @@ type Dict = {
 
 export const t: Record<Lang, Dict> = {
   nl: {
-    nav: { products: "Producten", capabilities: "Wat we doen", process: "Hoe we werken", studio: "Studio", faq: "FAQ", book: "Plan een gesprek" },
+    nav: { products: "Producten", capabilities: "Wat we doen", process: "Hoe we werken", studio: "Studio", faq: "FAQ", tools: "Tools", book: "Plan een gesprek" },
     hero: {
       eyebrow: "Sidestream · Venture Studio",
       headline: "Een engineering­studio die echte producten bouwt én draait.",
@@ -107,6 +151,72 @@ export const t: Record<Lang, Dict> = {
         { q: "Kunnen jullie met onze stack werken?", a: "Meestal wel. We werken in jouw stack in plaats van een rewrite te forceren." },
         { q: "Waar zijn jullie gevestigd?", a: "België. We werken door heel Europa, in het Nederlands of Engels." },
       ],
+    },
+    tools: {
+      nav: "Tools",
+      eyebrow: "Gratis tools",
+      heading: "Reken het even uit.",
+      sub: "Twee snelle rekentools — wat je product kost om te bouwen, en wat automatisering je bespaart. Geen account nodig.",
+      teaser: {
+        eyebrow: "Gratis tools",
+        title: "Bereken je build of je besparing.",
+        body: "Schat in een minuut wat je product kost, of hoeveel uur automatisering je team scheelt.",
+        cta: "Open de tools",
+      },
+      disclaimer: "Indicatief — een echte offerte scopen we samen in een kort gesprek.",
+      build: {
+        title: "Wat kost het om te bouwen?",
+        sub: "Kies type, omvang en extra's voor een richtprijs en doorlooptijd.",
+        typeLabel: "Wat bouwen we?",
+        types: [
+          { id: "mvp", label: "MVP" },
+          { id: "product", label: "Volledig product" },
+          { id: "ai", label: "AI-agent" },
+          { id: "automation", label: "Automatisering" },
+          { id: "security", label: "Security-audit" },
+        ],
+        sizeLabel: "Omvang",
+        sizes: [
+          { id: "s", label: "Klein" },
+          { id: "m", label: "Gemiddeld" },
+          { id: "l", label: "Groot" },
+        ],
+        addonsLabel: "Extra's",
+        addonList: [
+          { id: "auth", label: "Accounts & login" },
+          { id: "payments", label: "Betalingen" },
+          { id: "ai", label: "AI-functies" },
+          { id: "dashboard", label: "Admin-dashboard" },
+          { id: "mobile", label: "Mobiele app" },
+          { id: "integrations", label: "Integraties" },
+        ],
+        rushLabel: "Versneld opleveren",
+        estimateLabel: "Richtprijs",
+        timelineLabel: "Doorlooptijd",
+        weeks: "weken",
+        cta: "Stuur me deze schatting",
+      },
+      savings: {
+        title: "Wat bespaart automatisering je?",
+        sub: "Schat de jaarlijkse winst van één handmatig proces automatiseren.",
+        peopleLabel: "Mensen op de taak",
+        hoursLabel: "Uur per week elk",
+        costLabel: "Kost per uur (€)",
+        autoLabel: "Te automatiseren",
+        hoursSavedLabel: "Bespaarde uren",
+        moneySavedLabel: "Bespaard",
+        perYear: "per jaar",
+        cta: "Laten we dit automatiseren",
+      },
+      lead: {
+        title: "Dit op maat krijgen?",
+        namePlaceholder: "Je naam",
+        emailPlaceholder: "Je e-mail",
+        send: "Verstuur",
+        sending: "Versturen…",
+        success: "Top — we nemen binnen een dag contact op.",
+        error: "Er ging iets mis. Mail ons gerust op hello@sidestream.be.",
+      },
     },
     products: {
       eyebrow: "Geselecteerd werk",
@@ -184,7 +294,7 @@ export const t: Record<Lang, Dict> = {
     },
   },
   en: {
-    nav: { products: "Products", capabilities: "What we do", process: "How we work", studio: "Studio", faq: "FAQ", book: "Book a call" },
+    nav: { products: "Products", capabilities: "What we do", process: "How we work", studio: "Studio", faq: "FAQ", tools: "Tools", book: "Book a call" },
     hero: {
       eyebrow: "Sidestream · Venture Studio",
       headline: "An engineering studio that ships and operates real products.",
@@ -217,6 +327,72 @@ export const t: Record<Lang, Dict> = {
         { q: "Can you work with our stack?", a: "Usually yes. We work in your stack rather than force a rewrite." },
         { q: "Where are you based?", a: "Belgium. We work across Europe, in English or Dutch." },
       ],
+    },
+    tools: {
+      nav: "Tools",
+      eyebrow: "Free tools",
+      heading: "Run the numbers.",
+      sub: "Two quick calculators — what your product costs to build, and what automation saves you. No account needed.",
+      teaser: {
+        eyebrow: "Free tools",
+        title: "Estimate your build, or your savings.",
+        body: "In a minute, get a ballpark on what your product costs to build, or how many hours automation frees up.",
+        cta: "Open the tools",
+      },
+      disclaimer: "Indicative only — we scope a real quote together on a short call.",
+      build: {
+        title: "What will it cost to build?",
+        sub: "Pick a type, size and add-ons for a ballpark price and timeline.",
+        typeLabel: "What are we building?",
+        types: [
+          { id: "mvp", label: "MVP" },
+          { id: "product", label: "Full product" },
+          { id: "ai", label: "AI agent" },
+          { id: "automation", label: "Automation" },
+          { id: "security", label: "Security audit" },
+        ],
+        sizeLabel: "Size",
+        sizes: [
+          { id: "s", label: "Small" },
+          { id: "m", label: "Medium" },
+          { id: "l", label: "Large" },
+        ],
+        addonsLabel: "Add-ons",
+        addonList: [
+          { id: "auth", label: "Accounts & login" },
+          { id: "payments", label: "Payments" },
+          { id: "ai", label: "AI features" },
+          { id: "dashboard", label: "Admin dashboard" },
+          { id: "mobile", label: "Mobile app" },
+          { id: "integrations", label: "Integrations" },
+        ],
+        rushLabel: "Rushed delivery",
+        estimateLabel: "Ballpark price",
+        timelineLabel: "Timeline",
+        weeks: "weeks",
+        cta: "Send me this estimate",
+      },
+      savings: {
+        title: "What does automation save you?",
+        sub: "Estimate the yearly gain of automating one manual process.",
+        peopleLabel: "People on the task",
+        hoursLabel: "Hours per week each",
+        costLabel: "Cost per hour (€)",
+        autoLabel: "Automatable",
+        hoursSavedLabel: "Hours saved",
+        moneySavedLabel: "Saved",
+        perYear: "per year",
+        cta: "Let's automate this",
+      },
+      lead: {
+        title: "Want this tailored?",
+        namePlaceholder: "Your name",
+        emailPlaceholder: "Your email",
+        send: "Send",
+        sending: "Sending…",
+        success: "Great — we'll be in touch within a day.",
+        error: "Something went wrong. Email us at hello@sidestream.be.",
+      },
     },
     products: {
       eyebrow: "Selected work",

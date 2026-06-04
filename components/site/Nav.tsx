@@ -6,10 +6,10 @@ import { useI18n, LangToggle } from "@/components/i18n/LanguageProvider";
 export function Nav() {
   const { t } = useI18n();
   const links = [
-    { href: "#products", label: t.nav.products },
-    { href: "#for-you", label: t.nav.capabilities },
-    { href: "#process", label: t.nav.process },
-    { href: "#faq", label: t.nav.faq },
+    { href: "/#products", label: t.nav.products },
+    { href: "/#for-you", label: t.nav.capabilities },
+    { href: "/tools", label: t.nav.tools },
+    { href: "/#faq", label: t.nav.faq },
   ];
 
   return (
